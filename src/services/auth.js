@@ -5,7 +5,7 @@ const authService = {
   // 로그인
   login: async (email, password) => {
     try {
-      const response = await api.post('/auth/login', { email, password })
+      const response = await api.post('/members/login', { email, password })
       // 토큰을 로컬 스토리지에 저장
       if (response.data.token) {
         localStorage.setItem('token', response.data.token)
@@ -17,9 +17,9 @@ const authService = {
   },
   
   // 회원가입
-  register: async (name, email, password) => {
+  register: async (username, email, password) => {
     try {
-      return await api.post('/auth/register', { name, email, password })
+      return await api.post('/members/signup', { username, email, password })
     } catch (error) {
       throw error
     }
